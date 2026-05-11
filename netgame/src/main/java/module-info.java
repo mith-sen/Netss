@@ -9,7 +9,11 @@ module com.nets {
     exports com.nets.controller;
     opens com.nets.controller to javafx.fxml;
     exports com.nets.model;
+<<<<<<< HEAD
     opens com.nets.model to javafx.fxml, com.google.gson;
+=======
+    opens com.nets.model to javafx.fxml;
+>>>>>>> repoB/main
     exports com.nets.view;
     opens com.nets.view to javafx.fxml;
 }

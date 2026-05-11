@@ -6,6 +6,10 @@ public enum TileType {
     STRAIGHT,
     PC,
     EMPTY,
+<<<<<<< HEAD
     POWER,
     CROSS
+=======
+    POWER
+>>>>>>> repoB/main
 }

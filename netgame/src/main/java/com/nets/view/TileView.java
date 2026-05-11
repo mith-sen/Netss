@@ -2,6 +2,7 @@ package com.nets.view;
 
 import com.nets.model.Tile;
 import com.nets.model.TileType;
+<<<<<<< HEAD
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -15,6 +16,16 @@ public class TileView extends Canvas {
     private double lineWidth;
     private double currentVisualRotation;
     private Timeline rotationTimeline;
+=======
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import javafx.scene.transform.Rotate;
+
+public class TileView extends Canvas {
+    private static final double SIZE = 80;
+    private static final double LINE_WIDTH = 6;
+>>>>>>> repoB/main
 
     // Wire colors
     private static final Color WIRE_POWERED_COLOR = Color.rgb(0, 255, 100); // Bright Green - for connected wires
@@ -31,6 +42,7 @@ public class TileView extends Canvas {
     private int row;
     private int col;
 
+<<<<<<< HEAD
     public TileView(Tile tile, int row, int col, double size) {
         super(size, size);
         this.size = size;
@@ -122,10 +134,28 @@ public class TileView extends Canvas {
         // Background
         gc.setFill(tile.isLocked() ? LOCKED_COLOR : BG_COLOR);
         gc.fillRect(0, 0, size, size);
+=======
+    public TileView(Tile tile, int row, int col) {
+        super(SIZE, SIZE);
+        this.tile = tile;
+        this.row = row;
+        this.col = col;
+        draw();
+    }
+
+    public void draw() {
+        GraphicsContext gc = getGraphicsContext2D();
+        gc.clearRect(0, 0, SIZE, SIZE);
+
+        // Background
+        gc.setFill(tile.isLocked() ? LOCKED_COLOR : BG_COLOR);
+        gc.fillRect(0, 0, SIZE, SIZE);
+>>>>>>> repoB/main
 
         // Border
         gc.setStroke(Color.rgb(80, 80, 100));
         gc.setLineWidth(1);
+<<<<<<< HEAD
         gc.strokeRect(0, 0, size, size);
 
         // Draw tile based on type and rotation
@@ -133,6 +163,15 @@ public class TileView extends Canvas {
         gc.translate(size / 2, size / 2);
         gc.rotate(currentVisualRotation);
         gc.translate(-size / 2, -size / 2);
+=======
+        gc.strokeRect(0, 0, SIZE, SIZE);
+
+        // Draw tile based on type and rotation
+        gc.save();
+        gc.translate(SIZE / 2, SIZE / 2);
+        gc.rotate(tile.getRotation());
+        gc.translate(-SIZE / 2, -SIZE / 2);
+>>>>>>> repoB/main
 
         // Choose color based on powered status and tile type
         Color wireColor;
@@ -143,7 +182,11 @@ public class TileView extends Canvas {
         }
 
         gc.setStroke(wireColor);
+<<<<<<< HEAD
         gc.setLineWidth(lineWidth);
+=======
+        gc.setLineWidth(LINE_WIDTH);
+>>>>>>> repoB/main
         gc.setLineCap(javafx.scene.shape.StrokeLineCap.ROUND);
 
         switch (tile.getType()) {
@@ -156,9 +199,12 @@ public class TileView extends Canvas {
             case T_JUNCTION:
                 drawTJunction(gc);
                 break;
+<<<<<<< HEAD
             case CROSS:
                 drawCross(gc);
                 break;
+=======
+>>>>>>> repoB/main
             case PC:
                 drawPC(gc, wireColor);
                 break;
@@ -173,14 +219,21 @@ public class TileView extends Canvas {
         gc.restore();
 
         // Draw lock indicator
+<<<<<<< HEAD
         if (tile.isLocked() && tile.getType() != TileType.POWER) {
             gc.setFill(Color.rgb(200, 200, 200, 0.5));
             double lockSize = size * 0.2;
             gc.fillOval(size - lockSize - 5, size - lockSize - 5, lockSize, lockSize);
+=======
+        if (tile.isLocked()) {
+            gc.setFill(Color.rgb(200, 200, 200, 0.5));
+            gc.fillOval(SIZE - 20, SIZE - 20, 15, 15);
+>>>>>>> repoB/main
         }
     }
 
     private void drawStraight(GraphicsContext gc) {
+<<<<<<< HEAD
         double center = size / 2;
         gc.strokeLine(center, 0, center, size);
     }
@@ -212,16 +265,52 @@ public class TileView extends Canvas {
 
         // Draw PC as a filled square (like in reference game)
         double squareSize = size * 0.375;
+=======
+        double center = SIZE / 2;
+        gc.strokeLine(center, 0, center, SIZE);
+    }
+
+    private void drawCorner(GraphicsContext gc) {
+        double center = SIZE / 2;
+        gc.strokeLine(center, 0, center, center);
+        gc.strokeLine(center, center, SIZE, center);
+    }
+
+    private void drawTJunction(GraphicsContext gc) {
+        double center = SIZE / 2;
+        // Draw T-shape as one continuous path: top, left, and right (no bottom)
+        gc.beginPath();
+        gc.moveTo(center, 0);           // Start at top
+        gc.lineTo(center, center);      // Draw to center
+        gc.moveTo(0, center);           // Move to left
+        gc.lineTo(SIZE, center);        // Draw horizontal line to right
+        gc.stroke();
+    }
+
+    private void drawPC(GraphicsContext gc, Color wireColor) {
+        double center = SIZE / 2;
+
+        // Draw wire connection (vertical line from top to center)
+        gc.strokeLine(center, 0, center, center - 10);
+
+        // Draw PC as a filled square (like in reference game)
+        double squareSize = 30;
+>>>>>>> repoB/main
         gc.setFill(wireColor);
         gc.fillRect(center - squareSize/2, center - squareSize/2, squareSize, squareSize);
 
         // Add border to make it stand out
         gc.setStroke(wireColor.brighter());
+<<<<<<< HEAD
         gc.setLineWidth(lineWidth * 0.3);
+=======
+        gc.setLineWidth(2);
+>>>>>>> repoB/main
         gc.strokeRect(center - squareSize/2, center - squareSize/2, squareSize, squareSize);
     }
 
     private void drawPower(GraphicsContext gc) {
+<<<<<<< HEAD
         double center = size / 2;
         
         // Dynamically draw connections for the power source
@@ -236,19 +325,34 @@ public class TileView extends Canvas {
 
         // Draw power as filled square (black/dark)
         double squareSize = size * 0.375;
+=======
+        double center = SIZE / 2;
+
+        // Draw power as filled square (black/dark)
+        double squareSize = 30;
+>>>>>>> repoB/main
         gc.setFill(Color.BLACK);
         gc.fillRect(center - squareSize/2, center - squareSize/2, squareSize, squareSize);
 
         // Add bright border
         gc.setStroke(Color.rgb(255, 255, 0)); // Yellow border for power
+<<<<<<< HEAD
         gc.setLineWidth(lineWidth * 0.5);
+=======
+        gc.setLineWidth(3);
+>>>>>>> repoB/main
         gc.strokeRect(center - squareSize/2, center - squareSize/2, squareSize, squareSize);
 
         // Draw lightning bolt symbol inside
         gc.setFill(Color.rgb(255, 255, 0));
+<<<<<<< HEAD
         double boltScale = size / 80.0;
         double[] xPoints = {center - 3 * boltScale, center - 6 * boltScale, center, center + 3 * boltScale, center + 6 * boltScale, center};
         double[] yPoints = {center - 8 * boltScale, center - 2 * boltScale, center - 2 * boltScale, center + 8 * boltScale, center + 2 * boltScale, center + 2 * boltScale};
+=======
+        double[] xPoints = {center - 3, center - 6, center, center + 3, center + 6, center};
+        double[] yPoints = {center - 8, center - 2, center - 2, center + 8, center + 2, center + 2};
+>>>>>>> repoB/main
         gc.fillPolygon(xPoints, yPoints, 6);
     }
 
@@ -266,7 +370,10 @@ public class TileView extends Canvas {
 
     public void updateTile(Tile tile) {
         this.tile = tile;
+<<<<<<< HEAD
         this.currentVisualRotation = tile.getRotation();
+=======
+>>>>>>> repoB/main
         draw();
     }
 }

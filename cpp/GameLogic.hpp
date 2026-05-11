@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef GAME_LOGIC_HPP
 #define GAME_LOGIC_HPP
 
@@ -56,3 +57,18 @@ inline void applyMove(Board &board, const Move &move)
 }
 
 #endif // GAME_LOGIC_HPP
+=======
+#ifndef GAME_LOGIC_HPP
+#define GAME_LOGIC_HPP
+
+#include "Tile.hpp"
+
+// Implementations
+
+inline void applyMove(Board &board, const Move &move) {
+  Tile &tile = board.grid[move.x][move.y];
+  tile.rotation = (tile.rotation + move.rotation) % 360;
+}
+
+#endif // GAME_LOGIC_HPP
+>>>>>>> repoB/main

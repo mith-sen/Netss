@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NETS: Network Connectivity Puzzle
 
 ## Project Overview
@@ -140,3 +141,6 @@ make clean
 For a deeper dive into the architecture and execution flow, refer to:
 *   **[WORKFLOW.md](workflow.md):** Step-by-step execution details from startup to termination.
 *   **[QnA.md](qna.md):** Academic defense, algorithmic analysis, and complexity details.
+=======
+# Nets
+>>>>>>> repoB/main

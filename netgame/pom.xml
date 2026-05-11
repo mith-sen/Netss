@@ -56,7 +56,14 @@
                 <configuration>
                     <mainClass>com.nets.NetsGame</mainClass>
                     <options>
+<<<<<<< HEAD
                         <option>-Xmx512m</option>
+=======
+                        <option>--add-opens</option>
+                        <option>com.netgame.netgame/com.nets.model=com.google.gson</option>
+                        <option>--add-opens</option>
+                        <option>com.netgame/com.nets.model=ALL-UNNAMED</option>
+>>>>>>> repoB/main
                     </options>
                 </configuration>
             </plugin>

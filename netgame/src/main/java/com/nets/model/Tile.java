@@ -5,7 +5,10 @@ public class Tile {
     private int rotation;
     private boolean locked;
     private boolean isPowered;
+<<<<<<< HEAD
     private boolean[] connections;
+=======
+>>>>>>> repoB/main
 
     public Tile() {}
 
@@ -14,6 +17,7 @@ public class Tile {
         this.rotation = rotation;
         this.locked = locked;
         this.isPowered = false;
+<<<<<<< HEAD
         this.connections = null;
     }
 
@@ -23,6 +27,8 @@ public class Tile {
 
     public void setConnections(boolean[] connections) {
         this.connections = connections;
+=======
+>>>>>>> repoB/main
     }
 
     public TileType getType() {

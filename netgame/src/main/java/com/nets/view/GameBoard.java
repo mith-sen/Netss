@@ -12,16 +12,22 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+<<<<<<< HEAD
 import javafx.stage.Screen;
 import javafx.geometry.Rectangle2D;
 
+=======
+>>>>>>> repoB/main
 public class GameBoard extends VBox {
     private GridPane gridPane;
     private TileView[][] tileViews;
     private Label statusLabel;
     private Label statsLabel;
     private GameState gameState;
+<<<<<<< HEAD
     private javafx.scene.layout.HBox middleContainer;
+=======
+>>>>>>> repoB/main
 
     public GameBoard() {
         setSpacing(20);
@@ -31,12 +37,18 @@ public class GameBoard extends VBox {
 
         // Status label
         statusLabel = new Label();
+<<<<<<< HEAD
         statusLabel.setTextFill(Color.WHITE);
 
         // Middle container for grid and potential side panel
         middleContainer = new javafx.scene.layout.HBox(80);
         middleContainer.setAlignment(Pos.CENTER);
 
+=======
+        statusLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        statusLabel.setTextFill(Color.WHITE);
+
+>>>>>>> repoB/main
         // Grid pane
         gridPane = new GridPane();
         gridPane.setHgap(2);
@@ -44,6 +56,7 @@ public class GameBoard extends VBox {
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setStyle("-fx-background-color: #16213e;");
         gridPane.setPadding(new Insets(10));
+<<<<<<< HEAD
         
         middleContainer.getChildren().add(gridPane);
 
@@ -109,6 +122,15 @@ public class GameBoard extends VBox {
 
         double size = Math.min(sizeW, sizeH);
         return Math.max(10, size); 
+=======
+
+        // Stats label
+        statsLabel = new Label();
+        statsLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
+        statsLabel.setTextFill(Color.rgb(200, 200, 200));
+
+        getChildren().addAll(statusLabel, gridPane, statsLabel);
+>>>>>>> repoB/main
     }
 
     public void loadGameState(GameState state) {
@@ -119,19 +141,29 @@ public class GameBoard extends VBox {
         int width = state.getMeta().getWidth();
         tileViews = new TileView[height][width];
 
+<<<<<<< HEAD
         double tileSize = calculateTileSize(width, height);
 
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
                 Tile tile = state.getGrid()[row][col];
                 TileView tileView = new TileView(tile, row, col, tileSize);
+=======
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                Tile tile = state.getGrid()[row][col];
+                TileView tileView = new TileView(tile, row, col);
+>>>>>>> repoB/main
                 tileViews[row][col] = tileView;
                 gridPane.add(tileView, col, row);
             }
         }
 
         updateUI();
+<<<<<<< HEAD
         updateResponsiveSizes();
+=======
+>>>>>>> repoB/main
     }
 
     public void updateUI() {
@@ -170,8 +202,11 @@ public class GameBoard extends VBox {
     public GameState getGameState() {
         return gameState;
     }
+<<<<<<< HEAD
 
     public void rotateBoardVisual() {
         gridPane.setRotate(gridPane.getRotate() + 90);
     }
+=======
+>>>>>>> repoB/main
 }

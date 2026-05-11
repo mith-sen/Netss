@@ -5,7 +5,10 @@ public class Move {
     private int row;
     private int col;
     private int rotation;
+<<<<<<< HEAD
     private java.util.List<VisualStep> steps;
+=======
+>>>>>>> repoB/main
 
     public Move() {}
 
@@ -16,6 +19,7 @@ public class Move {
         this.rotation = rotation;
     }
 
+<<<<<<< HEAD
     public java.util.List<VisualStep> getSteps() {
         return steps;
     }
@@ -24,6 +28,8 @@ public class Move {
         this.steps = steps;
     }
 
+=======
+>>>>>>> repoB/main
     public String getActor() {
         return actor;
     }
